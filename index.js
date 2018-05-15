@@ -6,18 +6,6 @@ const pug = require('pug');
 const index = pug.compileFile('./pages/index.pug');
 const main = pug.compileFile('./pages/main.pug');
 
-// (
-//   {
-//     queryStringParameters: {
-//       url: 'https://www.youtube.com/watch?v=ffxKSjUwKdU',
-//     },
-//   },
-//   null,
-//   (err, response) => {
-//     console.log(response.body);
-//   },
-// )
-
 exports.handler = (event, context, callback) => {
   if (!event.queryStringParameters) {
     callback(null, {
@@ -56,13 +44,14 @@ exports.handler = (event, context, callback) => {
           body: main({
             title,
             thumbnail,
+            url,
             links: formats.reduce((result, format) => {
               if (format.ext === 'mp4') {
                 result += `
-                  <a href="blob:${format.url}"
+                  <a href="${format.url}"
                      download="${_filename}"
                      data-downloadurl="video/mp4:${_filename}:blob:${format.url}"
-                     target="_blank">${format.format}</a>\n`;
+                     target="_blank">${format.format}</a><br />`;
               }
               return result;
             }, ''),
