@@ -1,0 +1,43 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  width: 50%;
+  font-size: 2rem;
+  font-family: Noto Sans;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #333;
+  background: transparent;
+  transition: all .5s;
+}
+
+.input:focus {
+  width: 60%;
+  border-bottom: 2px solid #2196F3;
+}
+
+.mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #eee;
+  display: none;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

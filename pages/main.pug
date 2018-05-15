@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title
+      Youtube DL
+    style
+      include ./main-style.css
+  body
+    div(class='title')
+      #{title}
+    - var poster = thumbnail;
+    - var source = url;
+    video(width='640' height='360' poster=poster controls preload)
+      source(src=source type='video/mp4')
+    #{links}
