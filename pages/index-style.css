@@ -3,6 +3,10 @@ body {
   height: 100%;
 }
 
+* {
+  font-family: 'lato', sans-serif;
+}
+
 body {
   display: flex;
   flex-wrap: nowrap;
@@ -12,20 +16,19 @@ body {
 }
 
 .input {
-  width: 50%;
   font-size: 2rem;
-  font-family: Noto Sans;
+  font-weight: 300;
   text-align: center;
-  border: none;
   outline: none;
-  border-bottom: 1px solid #333;
-  background: transparent;
-  transition: all .5s;
+  padding: 1rem;
+  color: #525252;
+  border-radius: 10px;
+  background-color: #fff;
+  border: solid 1px #dedede;
 }
 
-.input:focus {
-  width: 60%;
-  border-bottom: 2px solid #2196F3;
+.input::placeholder {
+  color: #c2c2c2;
 }
 
 .mask {
@@ -34,8 +37,8 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
-  background: #eee;
   display: none;
+  background-color: #fff;
   flex-wrap: nowrap;
   flex-direction: column;
   align-items: center;
