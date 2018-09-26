@@ -9,3 +9,9 @@ Start development server
 ```
 yarn dev
 ```
+
+Build bundle file
+
+```
+yarn build
+```

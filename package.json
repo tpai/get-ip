@@ -4,7 +4,8 @@
   "description": "This is AWS Lambda function, it will generate a website, process youtube url and show video info.",
   "main": "index.js",
   "scripts": {
-    "dev": "node test.js"
+    "dev": "node test.js",
+    "build": "zip -r ${PWD##*/}_$(date +%s).zip . -x *.git* -x *.zip"
   },
   "author": "Tony Pai",
   "license": "ISC",
