@@ -1,3 +1,11 @@
-# Youtube DL for AWS Lambda
+# Youtube Downloader
 
-This lambda function will generate a website, and process the input url and show video info.
+This is AWS Lambda function, it will generate a website, process youtube url and show video info.
+
+## Usage
+
+Start development server
+
+```
+yarn dev
+```

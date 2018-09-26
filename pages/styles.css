@@ -1,13 +1,25 @@
-html, body {
+html,
+body {
   height: 100%;
+  margin: 0;
 }
+
+* {
+  font-family: 'lato', sans-serif;
+}
+
 body {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
+
+.customized {
+  margin-top: 50px;
+}
+
 video {
   margin: 1rem;
 }

@@ -2,18 +2,18 @@ const express = require('express');
 const app = express();
 const ydl = require('./index');
 
-app.get('/', (req, res) =>
-  ydl.handler(
-    {
-      queryStringParameters: {
-        url: 'https://www.youtube.com/watch?v=ehubCWoMUKo',
-      },
-    },
+app.get('/', (req, res) => {
+  return ydl.handler(
+    Object.assign({},
+      Object.keys(req.query).length > 0 ? {
+        queryStringParameters: { ...req.query },
+      } : {}
+    ),
     null,
     (err, response) => {
       res.send(response.body);
     },
-  ),
-);
+  );
+});
 
-app.listen(3001, () => console.log('Listening on port 3001!'));
+app.listen(3001, () => console.log('Server is now listening on port 3001...'));

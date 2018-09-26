@@ -1,13 +1,20 @@
 doctype html
 html
   head
-    title Youtube DL
+    title Youtube Downloader
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    link(href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet')
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.3/tocas.css' rel='stylesheet')
     style
-      include ./main-style.css
+      include ./styles.css
   body
-    div(class='title') #{title}
-    - var poster = thumbnail;
-    - var source = url;
-    video(width='640' height='360' poster=poster controls preload)
-      source(src=source type='video/mp4')
-    div!= links
+    div.ts.very.narrow.container.customized
+      form.ts.form
+        div.field
+          h2.ts.center.aligned.header #{title}
+          - var poster = thumbnail;
+          - var source = url;
+          video(width='640' height='360' poster=poster controls preload)
+            source(src=source type='video/mp4')
+        div.field
+          div.ts.relaxed.divided.list!= links

@@ -51,7 +51,8 @@ exports.handler = (event, context, callback) => {
                   <a href="${format.url}"
                      download="${_filename}"
                      data-downloadurl="video/mp4:${_filename}:blob:${format.url}"
-                     target="_blank">${format.format}</a><br />`;
+                     target="_blank"
+                     class="item">${format.format}</a>`;
               }
               return result;
             }, ''),
