@@ -18,11 +18,15 @@ exports.handler = (event, context, callback) => {
   } else {
     const { api, url } = event.queryStringParameters;
     youtubeDl.getInfo(url, [], (err, info) => {
-      if (err) {
+      if (err || typeof info === 'undefined') {
         callback(null, {
-          statusCode: '400',
-          body: err,
+          statusCode: '200',
+          body: '<div>This video could not decrypted by <strong>youtube-dl</strong>, try <a href="http://kej.tw/flvretriever">another tool</a>.</div>',
+          headers: {
+            'Content-Type': 'text/html; charset=utf-8',
+          },
         });
+        return;
       }
 
       if (typeof api !== 'undefined') {
@@ -32,14 +36,6 @@ exports.handler = (event, context, callback) => {
           headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
-          },
-        });
-      } else if (typeof info !== 'undefined') {
-        callback(null, {
-          statusCode: '401',
-          body: '<div>This video is strongly encrypted by Youtube, try <a href="http://kej.tw/flvretriever">another tool</a>.</div>',
-          headers: {
-            'Content-Type': 'text/html; charset=utf-8',
           },
         });
       } else {
