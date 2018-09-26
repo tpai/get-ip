@@ -7,17 +7,33 @@
 
   input.onkeyup = function (event) {
     if (this.value.match(/(http:|https:)?\/\/(www\.)?(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/) !== null) {
-      step1.className = 'completed step';
-      step2.className = 'active step';
+      complete(step1);
+      active(step2);
+      disable(step3);
 
       if (event.keyCode === 13) {
-        step2.className = 'completed step';
-        step3.className = 'active step';
-        parent.className += ' loading';
+        complete(step1);
+        complete(step2);
+        active(step3);
 
+        target.className += ' loading';
         this.disabled = 'true';
         location.assign(`?url=${encodeURIComponent(this.value)}`);
       }
+    } else {
+      active(step1);
+      disable(step2);
+      disable(step3);
     }
   };
+
+  function active (target) {
+    target.className = 'active step';
+  }
+  function complete (target) {
+    target.className = 'completed step';
+  }
+  function disable (target) {
+    target.className = 'disabled step';
+  }
 }())
