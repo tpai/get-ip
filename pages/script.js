@@ -16,7 +16,7 @@
         complete(step2);
         active(step3);
 
-        target.className += ' loading';
+        parent.className += ' loading';
         this.disabled = 'true';
         location.assign(`?url=${encodeURIComponent(this.value)}`);
       }

@@ -34,6 +34,14 @@ exports.handler = (event, context, callback) => {
             'Content-Type': 'application/json',
           },
         });
+      } else if (typeof info !== 'undefined') {
+        callback(null, {
+          statusCode: '401',
+          body: '<div>This video is strongly encrypted by Youtube, try <a href="http://kej.tw/flvretriever">another tool</a>.</div>',
+          headers: {
+            'Content-Type': 'text/html; charset=utf-8',
+          },
+        });
       } else {
         const { title, thumbnail, url, formats, _filename } = info;
         callback(null, {
