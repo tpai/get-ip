@@ -11,9 +11,9 @@ app.get('/', (req, res) => {
     ),
     null,
     (err, response) => {
-      res.send(response.body);
+      res.status(response.statusCode).send(response.body);
     },
   );
 });
 
-app.listen(3001, () => console.log('Server is now listening on port 3001...'));
+app.listen(3001, () => console.log('Server is now listening on port 3001'));
