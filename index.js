@@ -21,7 +21,7 @@ exports.handler = (event, context, callback) => {
       if (err || typeof info === 'undefined') {
         callback(null, {
           statusCode: '200',
-          body: '<div>This video could not decrypted by <strong>youtube-dl</strong>, try <a href="http://kej.tw/flvretriever">another tool</a>.</div>',
+          body: `<h2>This video could not be decrypted by <strong>youtube-dl</strong>, try <a href="http://kej.tw/flvretriever?videoUrl=${encodeURIComponent(url)}">kej flvretriever</a> instead.</h2>`,
           headers: {
             'Content-Type': 'text/html; charset=utf-8',
           },
