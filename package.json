@@ -10,8 +10,8 @@
   "author": "Tony Pai",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3",
+    "express": "^4.17.1",
     "pug": "^2.0.3",
-    "youtube-dl": "^1.11.1"
+    "youtube-dl": "^2.0.0"
   }
 }
