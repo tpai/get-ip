@@ -19,6 +19,7 @@ exports.handler = (event, context, callback) => {
     const { api, url } = event.queryStringParameters;
     youtubeDl.getInfo(url, [], (err, info) => {
       if (err || typeof info === 'undefined') {
+        console.log(err)
         callback(null, {
           statusCode: '200',
           body: `<h2>This video could not be decrypted by <strong>youtube-dl</strong>, try <a href="http://kej.tw/flvretriever?videoUrl=${encodeURIComponent(url)}">kej flvretriever</a> instead.</h2>`,
