@@ -12,6 +12,6 @@
   "dependencies": {
     "express": "^4.17.1",
     "pug": "^2.0.3",
-    "youtube-dl": "^2.0.0"
+    "youtube-dl": "^2.1.0"
   }
 }
