@@ -1,7 +1,7 @@
 {
-  "name": "yt-dl",
+  "name": "get-ip",
   "version": "1.0.0",
-  "description": "This is AWS Lambda function, it will generate a website, process youtube url and show video info.",
+  "description": "A AWS lambda function which show your IP address and user agent of current browser.",
   "main": "index.js",
   "scripts": {
     "dev": "node test.js",
@@ -10,8 +10,8 @@
   "author": "Tony Pai",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "pug": "^2.0.3",
-    "youtube-dl": "^2.1.0"
+    "pug": "^2.0.3"
   }
 }

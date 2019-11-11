@@ -13,16 +13,17 @@ body {
   flex-wrap: nowrap;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  text-align: center;
 }
 
-.customized {
-  margin-top: 50px;
-}
-
-video {
-  margin: 1rem;
-}
 .title {
+  width: 100%;
   font-size: 2rem;
+}
+
+.subtitle {
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 100;
 }

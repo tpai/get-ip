@@ -1,69 +1,27 @@
 'use strict';
 
-const youtubeDl = require('youtube-dl');
 const pug = require('pug');
+const {
+  getFirstForwardedIp,
+  getSourceIp,
+  getUserAgent
+} = require('./selectors/event');
 
 const index = pug.compileFile('./pages/index.pug');
-const main = pug.compileFile('./pages/main.pug');
 
 exports.handler = (event, context, callback) => {
-  if (!event.queryStringParameters) {
-    callback(null, {
-      statusCode: '200',
-      body: index(),
-      headers: {
-        'Content-Type': 'text/html; charset=utf-8',
-      },
-    });
-  } else {
-    const { api, url } = event.queryStringParameters;
-    youtubeDl.getInfo(url, [], (err, info) => {
-      if (err || typeof info === 'undefined') {
-        console.log(err)
-        callback(null, {
-          statusCode: '200',
-          body: `<h2>This video could not be decrypted by <strong>youtube-dl</strong>, try <a href="http://kej.tw/flvretriever?videoUrl=${encodeURIComponent(url)}">kej flvretriever</a> instead.</h2>`,
-          headers: {
-            'Content-Type': 'text/html; charset=utf-8',
-          },
-        });
-        return;
-      }
-
-      if (typeof api !== 'undefined') {
-        callback(null, {
-          statusCode: '200',
-          body: JSON.stringify(info),
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
-          },
-        });
-      } else {
-        const { title, thumbnail, url, formats, _filename } = info;
-        callback(null, {
-          statusCode: '200',
-          headers: {
-            'Content-Type': 'text/html; charset=utf-8',
-          },
-          body: main({
-            title,
-            thumbnail,
-            url,
-            links: formats.reduce((result, format) => {
-              if (format.ext === 'mp4') {
-                result += `
-                  <a href="${format.url}"
-                     download="${_filename}"
-                     data-downloadurl="video/mp4:${_filename}:blob:${format.url}"
-                     target="_blank"
-                     class="item">${format.format}</a>`;
-              }
-              return result;
-            }, ''),
-          }),
-        });
-      }
-    });
-  }
+  const firstForwardedIp = getFirstForwardedIp(event)
+  const sourceIp = getSourceIp(event)
+  const userAgent = getUserAgent(event)
+  console.log(event)
+  callback(null, {
+    statusCode: '200',
+    body: index({
+      ip: firstForwardedIp || sourceIp,
+      userAgent
+    }),
+    headers: {
+      'Content-Type': 'text/html; charset=utf-8',
+    },
+  });
 };

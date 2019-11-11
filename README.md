@@ -1,6 +1,6 @@
-# Youtube Downloader
+# Get IP
 
-This is AWS Lambda function, it will generate a website, process youtube url and show video info.
+A AWS lambda function which show your IP address and user agent of current browser.
 
 ## Usage
 
@@ -10,8 +10,14 @@ Start development server
 yarn dev
 ```
 
-Build bundle file
+## Deployment
 
-```
-yarn build
-```
+Deploy via AWS CDK
+
+1. Copy `.env.example` to `.env`
+1. Fill up the blanks.
+1. Make sure you are in correct profile.
+   ```
+   aws sts get-caller-identity
+   ```
+1. Run `cdk deploy`

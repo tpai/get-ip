@@ -1,32 +1,11 @@
 doctype html
 html
   head
-    title Youtube Downloader
+    title Get IP
     meta(name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no")
     link(href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet')
-    link(href='https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.3/tocas.css' rel='stylesheet')
     style
       include ./styles.css
   body
-    div.ts.very.narrow.container.customized
-      form.ts.form
-        div.field
-          div.ts.ordered.steps
-            div.active.step(id='step1')
-              div.content
-                div.title Paste
-                div.description Youtube Link
-            div.disabled.step(id='step2')
-              div.content
-                div.title Press
-                div.description Enter
-            div.disabled.step(id='step3')
-              div.content
-                div.title Download
-                div.description Choose Quality
-        div.field
-          div.ts.icon.fluid.input(id='parent')
-            input(type='text' id='input' placeholder='https://www.youtube.com/watch?v=XXXXXXXXX' onkeydown='if(event.keyCode === 13)return false;')
-            i.search.icon
-      script
-        include ./script.js
+    div.title #{ip}
+    div.subtitle #{userAgent}
