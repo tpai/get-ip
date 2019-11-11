@@ -5,7 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "node test.js",
-    "build": "zip -r ${PWD##*/}_$(date +%s).zip . -x *.git* -x *.zip"
+    "build:zip": "zip -r get_ip.zip index.js pages/* selectors/* node_modules/*",
+    "build:zip:hash": "zip -r get_ip-$(date +%s).zip . -x *.git* -x *.zip",
+    "clean": "rm -rf node_modules/",
+    "build": "yarn ts:build && yarn in:prod && yarn build:zip",
+    "deploy": "yarn build && yarn && cdk deploy",
+    "destroy": "cdk destroy",
+    "in:prod": "yarn clean && yarn install --production",
+    "ts:build": "tsc",
+    "ts:watch": "tsc -w"
   },
   "author": "Tony Pai",
   "license": "ISC",
@@ -13,5 +21,13 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "@aws-cdk/aws-apigateway": "^1.15.0",
+    "@aws-cdk/aws-certificatemanager": "^1.15.0",
+    "@aws-cdk/aws-lambda": "^1.15.0",
+    "@aws-cdk/core": "^1.15.0",
+    "@types/node": "^12.12.7",
+    "typescript": "^3.7.2"
   }
 }
