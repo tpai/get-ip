@@ -10,6 +10,8 @@ Start development server
 yarn dev
 ```
 
+Visit `localhost:3001`
+
 ## Deployment
 
 Deploy via AWS CDK
@@ -20,4 +22,4 @@ Deploy via AWS CDK
    ```
    aws sts get-caller-identity
    ```
-1. Run `cdk deploy`
+1. Run `yarn deploy`
