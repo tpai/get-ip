@@ -14,7 +14,7 @@ export class CdkStack extends cdk.Stack {
       code: lambda.Code.fromAsset('./get_ip.zip'),
       handler: 'index.handler',
       timeout: cdk.Duration.seconds(5),
-      runtime: lambda.Runtime.NODEJS_10_X
+      runtime: lambda.Runtime.NODEJS_14_X
     });
 
     const acmCert = certmgr.Certificate.fromCertificateArn(this, 'cert', certArn!);
