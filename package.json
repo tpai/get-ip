@@ -18,16 +18,16 @@
   "author": "Tony Pai",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^8.2.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "pug": "^2.0.3"
+    "pug": "^3.0.2"
   },
   "devDependencies": {
     "@aws-cdk/aws-apigateway": "^1.15.0",
     "@aws-cdk/aws-certificatemanager": "^1.15.0",
     "@aws-cdk/aws-lambda": "^1.15.0",
     "@aws-cdk/core": "^1.15.0",
-    "@types/node": "^12.12.7",
-    "typescript": "^3.7.2"
+    "@types/node": "^15.9.0",
+    "typescript": "^4.3.2"
   }
 }
